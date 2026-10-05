@@ -1,9 +1,9 @@
 <template>
-  <div class="flex min-h-screen bg-background text-foreground">
-    <!-- Collapsible Desktop Sidebar (Exact match to dashboard/resources/js/components/layout/Sidebar.vue) -->
+  <div class="flex h-screen overflow-hidden bg-background text-foreground">
+    <!-- Collapsible Desktop Sidebar (Permanently fixed, full height) -->
     <aside
       :class="[
-        'hidden lg:flex flex-col border-r bg-card text-card-foreground duration-300 ease-in-out h-screen sticky top-0 z-30',
+        'hidden lg:flex flex-col border-r bg-card text-card-foreground duration-300 ease-in-out h-full shrink-0 z-30',
         isCollapsed ? 'w-16' : 'w-64'
       ]"
     >
@@ -86,9 +86,9 @@
     </aside>
 
     <!-- Main Content Area -->
-    <div class="flex-1 flex flex-col min-w-0">
+    <div class="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
       <!-- Header Bar (Exact match to dashboard/resources/js/components/layout/Header.vue) -->
-      <header class="h-16 border-b bg-background/95 backdrop-blur sticky top-0 z-40 flex items-center justify-between px-4 lg:px-6 shrink-0">
+      <header class="h-16 border-b bg-background/95 backdrop-blur shrink-0 flex items-center justify-between px-4 lg:px-6 z-20">
         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
           <!-- Mobile Hamburger Toggle (No background, matches icon toolbar) -->
           <button
@@ -206,7 +206,7 @@
       </header>
 
       <!-- Page Content -->
-      <main class="flex-grow p-4 lg:p-8 overflow-y-auto">
+      <main class="flex-1 p-4 lg:p-8 overflow-y-auto">
         <div class="max-w-7xl mx-auto w-full">
           <slot />
         </div>
