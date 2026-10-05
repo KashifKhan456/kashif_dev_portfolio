@@ -5,7 +5,7 @@
 - **Engine**: MySQL 8.x / MariaDB
 - **ORM**: Laravel Eloquent
 - **Connection Configuration**: `.env` driven parameters (`DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`).
-- **Features**: Foreign keys, soft deletes (where applicable), JSON attribute casting for tech stacks, and transaction safety.
+- **Features**: Foreign keys, transactions, and JSON attribute casting for tech stacks and tags.
 
 ---
 
@@ -15,23 +15,20 @@
 - Utilizes `<script setup>` syntax across all page views and reusable components.
 
 ### B. Pinia State Management
-- Reactive state management across views.
-- Keeps client state synchronized with server responses returned by Inertia page props.
+- Reactive state management across views (`usePortfolioStore.js`).
+- Handles resume modal lifecycle and client-side UI states.
 
-### C. Shadcn Vue & Tailwind CSS
-- Accessible UI components (Dialogs, Dropdowns, Cards, Badges, Tooltips).
-- Tailwind utilities with glassmorphism aesthetic (`backdrop-blur-md`, custom gradients, dark mode support).
-
-### D. Lucide Icons (`lucide-vue-next` / `lucide-react`)
-- Vector iconography for skills, navigation, admin sidebar, and social links.
+### C. Styling & Icons
+- **Tailwind CSS**: Dark stealth aesthetic, CSS variables, and modern responsive utilities.
+- **Lucide Icons (`lucide-vue-next`)**: Vector iconography for tech badges, navigation dock, and admin panel.
 
 ---
 
-## 3. Optional AI Integration (Gemini AI Chatbot)
+## 3. Communication & Hardware Protocols
 
-- **Package**: `@google/genai`
-- **Purpose**: Optional interactive portfolio AI assistant capable of answering recruiter questions about Kashif's experience, background, and tech stack in real-time.
-- **Environment Key**:
-  ```env
-  GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
-  ```
+### A. Real-Time Hardware & Sockets (EPOS Ecosystem)
+- WebSocket event channels for real-time kitchen order dispatching.
+- Low-latency ESC/POS raw byte stream generation for 80mm network thermal printers via direct TCP sockets.
+
+### B. Contact & Inquiries Delivery
+- Laravel Mailable integration using standard SMTP for direct message forwarding and automated inquiry confirmations.

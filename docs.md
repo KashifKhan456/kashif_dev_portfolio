@@ -8,54 +8,49 @@ kashif-khan-portfolio/
 │   ├── Http/
 │   │   └── Controllers/
 │   │       ├── LandingController.php      # Serves public portfolio views via Inertia
+│   │       ├── ArticleShowController.php  # Public technical blog & article views
+│   │       ├── ProjectShowController.php  # Public project showcase & detail views
 │   │       ├── ContactController.php      # Processes contact form submissions
 │   │       └── Admin/
 │   │           ├── DashboardController.php# Admin dashboard metrics
+│   │           ├── ArticleController.php  # Articles CMS management
 │   │           ├── ProjectController.php  # Projects CRUD logic
 │   │           ├── SkillController.php    # Skills CRUD logic
 │   │           ├── ExperienceController.php# Experience CRUD logic
-│   │           ├── MessageController.php  # Inbox logic
-│   │           └── SettingController.php  # Site profile settings
-│   └── Models/
-│       ├── Project.php
-│       ├── Skill.php
-│       ├── Experience.php
-│       ├── Message.php
-│       └── Setting.php
-├── config/
+│   │           ├── TestimonialController.php# Testimonials management
+│   │           └── SettingController.php  # Site profile & hero settings
+│   ├── Models/
+│   │   ├── Article.php
+│   │   ├── Experience.php
+│   │   ├── Message.php
+│   │   ├── Project.php
+│   │   ├── Setting.php
+│   │   ├── Skill.php
+│   │   ├── Testimonial.php
+│   │   └── User.php
+│   └── Services/                          # Service layer business logic
 ├── database/
 │   ├── migrations/                        # DB schema definition files
 │   └── seeders/                           # Seed initial portfolio & admin data
 ├── resources/
 │   ├── js/
-│   │   ├── app.js                         # Inertia + Vue 3 + Pinia entry script
-│   │   ├── Components/                    # Reusable Shadcn & UI components
-│   │   │   ├── PrimaryButton.vue
-│   │   │   ├── ProjectCard.vue
-│   │   │   ├── SkillBadge.vue
-│   │   │   ├── Modal.vue
-│   │   │   └── Toast.vue
+│   │   ├── app.js                         # Inertia + Vue 3 entry script
+│   │   ├── Components/                    # Reusable UI components & MagicDock
 │   │   ├── Layouts/
 │   │   │   ├── GuestLayout.vue            # Public navigation & footer layout
 │   │   │   └── AuthenticatedLayout.vue    # Admin dashboard layout
 │   │   ├── Pages/
 │   │   │   ├── Welcome.vue                # Main Portfolio Landing Page
-│   │   │   ├── Auth/                      # Login & authentication pages
-│   │   │   └── Admin/                     # Admin section pages
-│   │   │       ├── Dashboard.vue
-│   │   │       ├── Projects/
-│   │   │       ├── Skills/
-│   │   │       ├── Experiences/
-│   │   │       ├── Messages/
-│   │   │       └── Settings.vue
+│   │   │   ├── Articles/                  # Technical blog index & show views
+│   │   │   ├── Projects/                  # Projects showcase & show views
+│   │   │   ├── Auth/                      # Authentication pages
+│   │   │   └── Admin/                     # Admin CMS section pages
 │   │   └── stores/                        # Pinia state stores
-│   │       ├── usePortfolioStore.js
-│   │       ├── useAdminStore.js
-│   │       └── useNotificationStore.js
+│   │       └── usePortfolioStore.js
 │   └── css/
-│       └── app.css                        # Tailwind CSS styles & custom glassmorphism
+│       └── app.css                        # Tailwind CSS styles & variables
 ├── routes/
-│   ├── web.php                            # Inertia web routes & admin middleware routes
+│   ├── web.php                            # Inertia web routes & admin routes
 │   └── auth.php                           # Authentication routes
 ├── architecture.md                        # Architecture documentation
 ├── features.md                            # Feature breakdown
@@ -67,7 +62,7 @@ kashif-khan-portfolio/
 
 ## 2. Environment Configuration (`.env`)
 
-Ensure your MySQL server is running locally (e.g. via XAMPP or MySQL Service) and create a database named `kashif_portfolio`.
+Ensure MySQL is running locally and configured in `.env`:
 
 ```env
 APP_NAME="Kashif Khan Portfolio"
@@ -110,13 +105,12 @@ createInertiaApp({
 
 ---
 
-## 4. Default Seeded Admin Credentials
+## 4. Admin Access & Deployment
 
-After running `php artisan migrate:fresh --seed`, default login credentials for the admin dashboard will be created:
+After running `php artisan migrate --seed`, access the Admin CMS panel:
 
-- **Login URL**: `http://localhost:8000/login`
-- **Email**: `admin@kashifkhan.com`
-- **Password**: `password` (or custom configured password)
+- **Login URL**: `/login`
+- **Dashboard URL**: `/admin/dashboard`
 
-> [!WARNING]
-> Change the default admin password in production immediately after first login.
+> [!IMPORTANT]
+> In production environments, ensure you set a strong, unique administrator password and configure standard HTTPS/SSL certificates.

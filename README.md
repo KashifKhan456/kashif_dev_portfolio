@@ -26,7 +26,9 @@ A state-of-the-art full-stack Developer Portfolio and dynamic Content Management
 - 📐 [System Architecture (`architecture.md`)](./architecture.md)
 - 🚀 [Feature Breakdown (`features.md`)](./features.md)
 - 📖 [Comprehensive Documentation (`docs.md`)](./docs.md)
-- 🔌 [Integrations & Services (`integrations.md`)](./integrations.md)
+- 🧱 [Service Layer Architecture (`services.md`)](./services.md)
+- 🔌 [Integrations & External Services (`integrations.md`)](./integrations.md)
+- 🎨 [Design System & Typography (`design_system.md`)](./design_system.md)
 
 ---
 

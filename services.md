@@ -1,6 +1,6 @@
 # 🧱 Service Layer & Thin Controllers Architecture (`services.md`)
 
-To maintain clean code separation, maximum testability, and slim controllers, this project enforces the **Form Request + Service Layer Architecture**.
+To maintain clean code separation, testability, and slim controllers, this project enforces the **Form Request + Service Layer Architecture**.
 
 ---
 
@@ -31,42 +31,39 @@ app/
 ├── Http/
 │   ├── Controllers/
 │   │   ├── LandingController.php        (Delegates to LandingService)
+│   │   ├── ArticleShowController.php    (Delegates to ArticleService)
+│   │   ├── ProjectShowController.php    (Delegates to ProjectService)
 │   │   ├── ContactController.php        (Delegates to ContactService)
 │   │   └── Admin/
 │   │       ├── DashboardController.php  (Delegates to DashboardService)
+│   │       ├── ArticleController.php    (Delegates to ArticleService)
 │   │       ├── ProjectController.php    (Delegates to ProjectService)
 │   │       ├── SkillController.php      (Delegates to SkillService)
 │   │       ├── ExperienceController.php (Delegates to ExperienceService)
-│   │       ├── MessageController.php    (Delegates to MessageService)
+│   │       ├── TestimonialController.php(Delegates to TestimonialService)
 │   │       └── SettingController.php    (Delegates to SettingService)
 │   │
 │   └── Requests/
 │       ├── ContactRequest.php
 │       └── Admin/
-│           ├── StoreProjectRequest.php
-│           ├── UpdateProjectRequest.php
-│           ├── StoreSkillRequest.php
-│           ├── UpdateSkillRequest.php
-│           ├── StoreExperienceRequest.php
-│           ├── UpdateExperienceRequest.php
-│           └── UpdateSettingRequest.php
 │
 └── Services/
     ├── LandingService.php
+    ├── ArticleService.php
     ├── ContactService.php
     ├── DashboardService.php
     ├── ProjectService.php
     ├── SkillService.php
     ├── ExperienceService.php
-    ├── MessageService.php
+    ├── TestimonialService.php
     └── SettingService.php
 ```
 
 ---
 
-## 📋 Architectural Rules & Developer Commandments
+## 📋 Architectural Rules
 
-1. **No Inline Validation in Controllers**: Controllers must NEVER call `$request->validate([...])`. Always type-hint a dedicated `FormRequest` class.
-2. **No Eloquent Queries in Controllers**: Controllers must NEVER directly invoke `Model::create()`, `Model::where()`, or `Model::find()`. All database interactions belong inside `app/Services/`.
-3. **Controller Responsibilities**: Controllers only type-hint Form Requests/Services and return `Inertia::render()` or `redirect()->back()`.
+1. **No Inline Validation in Controllers**: Controllers must never execute inline request validation arrays. Always type-hint a dedicated `FormRequest` class.
+2. **No Direct Eloquent Mutations in Controllers**: Complex database interactions and queries belong inside `app/Services/`.
+3. **Controller Responsibilities**: Controllers only coordinate request validation, call services, and return Inertia view responses.
 4. **Service Class Responsibilities**: Services execute database persistence, slug formatting, file uploads, notifications, and aggregate metrics.
