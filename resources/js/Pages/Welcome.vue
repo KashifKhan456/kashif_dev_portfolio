@@ -150,30 +150,15 @@
                     </div>
                   </div>
 
-                  <!-- Expandable Role Content -->
+                  <!-- Expandable Role Content (Clean Single Paragraph like reference) -->
                   <div
                     v-if="role.isOpen"
-                    class="mt-3 ml-0 sm:ml-11 md:ml-13 text-xs sm:text-sm text-muted-foreground space-y-2.5 break-words"
+                    class="mt-2.5 ml-0 sm:ml-11 md:ml-13 text-xs sm:text-sm text-muted-foreground leading-relaxed break-words"
                     @click.stop
                   >
-                    <p v-if="role.rawDescription" v-html="role.rawDescription" class="leading-relaxed"></p>
-
-                    <ul v-else-if="role.bullets && role.bullets.length" class="space-y-1 list-disc list-inside leading-relaxed">
-                      <li v-for="(bullet, bIdx) in role.bullets" :key="bIdx">
-                        {{ bullet }}
-                      </li>
-                    </ul>
-
-                    <!-- Technology Stack Badges -->
-                    <div v-if="role.tags && role.tags.length" class="flex flex-wrap gap-1 pt-1.5">
-                      <span
-                        v-for="tag in role.tags"
-                        :key="tag"
-                        class="text-[10px] font-medium border border-border h-5 px-2 rounded-md bg-muted/60 text-muted-foreground inline-flex items-center"
-                      >
-                        {{ tag }}
-                      </span>
-                    </div>
+                    <p class="leading-relaxed text-muted-foreground font-normal">
+                      {{ role.description }}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -639,11 +624,11 @@ const heroBio = computed(() => {
   return (
     props.settings?.hero_subtitle ||
     props.settings?.hero_title_2 ||
-    'Full Stack Software Engineer building scalable web applications, API integrations, and robust platforms using Laravel, Vue.js, React, Node.js, and modern AI automation tools.'
+    'Full Stack Software Engineer with 3.5+ years of experience building and scaling production web applications across Laravel, React.js, and Vue.js.'
   );
 });
 
-const defaultAbout = 'Full Stack Software Engineer with deep expertise in architecting and shipping scalable, high-performance web applications, cloud infrastructure, and modern AI automation platforms. In the past, <a href="#education" class="text-foreground font-medium underline underline-offset-4 hover:text-blue-500 transition-colors">I pursued a degree in software engineering</a>, and <a href="#work" class="text-foreground font-medium underline underline-offset-4 hover:text-blue-500 transition-colors">developed production platforms at multiple technology companies</a>.';
+const defaultAbout = 'Full Stack Software Engineer with 3.5+ years of experience building and scaling web applications across Laravel, React.js, and Vue.js. Proven track record leading development teams and architecting production systems including a real-time EPOS platform, secure RBAC-driven CRM systems, and maintainable e-commerce, auction, and LMS platforms from requirements through deployment.\n\nSkilled in RESTful API design, clean architecture, database optimization, and third-party integrations (Stripe, AWS S3, SendGrid). Strong advocate for TDD and accessibility (WCAG 2.2), combining solid technical execution with Agile leadership and a track record of mentoring teams and shipping on schedule.';
 
 const aboutText = computed(() => {
   return props.settings?.about_text || props.settings?.bio || defaultAbout;
@@ -689,14 +674,9 @@ const defaultExperiences = [
         role: 'Full Stack Developer',
         workType: 'Full-time',
         location: 'Rawalpindi, Pakistan',
-        period: 'April 2026 – Present',
+        period: 'April 20, 2026 – Present',
         isOpen: false,
-        bullets: [
-          'Contributing to the development of DocHyve, a full-stack web application built with Laravel, React.js, and Tailwind CSS.',
-          'Developing and maintaining scalable backend functionality using Laravel, including RESTful APIs, business logic, and integrations.',
-          'Building responsive and reusable frontend components with React.js and Tailwind CSS focusing on usability and performance.',
-          'Following clean coding practices, Git workflows, and software engineering standards.'
-        ],
+        description: 'Contributing to the end-to-end engineering of DocHyve, an enterprise web platform designed to streamline digital workflows and collaborative operations. Responsible for designing and maintaining robust backend RESTful APIs, complex business logic, and transactional database architecture, while constructing reusable, high-performance UI components with a strong focus on usability and system responsiveness. Actively collaborate across agile sprints to translate product requirements into maintainable features, conduct thorough code reviews, and enforce rigorous software engineering standards.',
         tags: ['Laravel', 'React.js', 'Tailwind CSS', 'RESTful APIs', 'Git']
       }
     ]
@@ -711,14 +691,10 @@ const defaultExperiences = [
         role: 'Senior Software Developer | Team Lead',
         workType: 'Full-time',
         location: 'Peshawar, Pakistan',
-        period: 'Sept 2025 – April 2026',
+        period: 'Sept 1, 2025 – 1 April, 2026',
         isOpen: false,
-        bullets: [
-          'Led a cross-functional team in architecting and delivering a scalable, high-performance EPOS System using Laravel, Vue.js, and Tailwind CSS.',
-          'Architected POS order management, cashier/shift tracking, promotions, automated receipt printing, and real-time inventory synchronization.',
-          'Integrated third-party services including Stripe, SendGrid, and AWS S3 for enhanced system reliability.'
-        ],
-        tags: ['Laravel', 'Vue.js', 'Tailwind CSS', 'Stripe', 'SendGrid', 'AWS S3']
+        description: 'Led a cross-functional engineering team in architecting and delivering an enterprise Electronic Point of Sale (EPOS) and Kitchen Display System engineered for high-volume hospitality environments. Spearheaded core modules including real-time order dispatch, cashier shift auditing, dynamic promotional engines, automated thermal receipt printing, and live inventory depletion tracking. Engineered bi-directional WebSocket channels for real-time customer and kitchen status synchronizations, integrated secure payment gateways, and dramatically enhanced throughput via advanced database indexing, caching strategies, and modular clean architecture.',
+        tags: ['Laravel', 'Vue.js', 'Tailwind CSS', 'Stripe', 'SendGrid', 'AWS S3', 'EPOS System', 'RESTful APIs']
       }
     ]
   },
@@ -732,14 +708,10 @@ const defaultExperiences = [
         role: 'Laravel Developer',
         workType: 'Full-time',
         location: 'Rawalpindi, Pakistan',
-        period: 'May 2025 – Aug 2025',
+        period: 'May, 2025 – 30 Aug, 2025',
         isOpen: false,
-        bullets: [
-          'Contributed to the development of a Real Estate CRM System built with Laravel.',
-          'Refactored legacy code and integrated Stripe payment integration, Google Calendar, and AWS S3.',
-          'Engineered a secure role-based access control (RBAC) system with real-time notifications.'
-        ],
-        tags: ['Laravel', 'Stripe', 'Google Calendar', 'AWS S3', 'SendGrid', 'RBAC']
+        description: 'Contributed to the engineering and modernization of a high-traffic Real Estate CRM platform. Collaborated closely with senior developers to refactor legacy codebases, resolve complex system bottlenecks, and integrate critical third-party services including automated payment handling, bidirectional Google Calendar scheduling, cloud asset storage, and transaction-driven email notifications. Architected a granular role-based access control (RBAC) engine alongside real-time user notification queues, significantly accelerating response times and improving cross-team operational transparency.',
+        tags: ['Laravel', 'Stripe', 'Google Calendar', 'AWS S3', 'SendGrid', 'RBAC', 'RESTful APIs']
       }
     ]
   },
@@ -753,14 +725,10 @@ const defaultExperiences = [
         role: 'Full Stack Developer',
         workType: 'Full-time',
         location: 'Rawalpindi, Pakistan',
-        period: 'June 2024 – May 2025',
+        period: 'June, 2024 – May 2025',
         isOpen: false,
-        bullets: [
-          'Leveraged full-stack expertise (Laravel, Vue.js, React) to build an Automotive E-Commerce Platform serving customers across the GCC region.',
-          'Achieved 93 Accessibility, 96 Best Practices, and 100 SEO score on Google Lighthouse.',
-          'Applied Test-Driven Development (TDD) and Agile/Scrum methodologies for high-quality software delivery.'
-        ],
-        tags: ['Laravel', 'Vue.js', 'React', 'TDD', 'Agile/Scrum', 'SEO', 'E-Commerce']
+        description: 'Architected and deployed multiple customer-facing web platforms, including an international automotive e-commerce marketplace serving clients across the UAE and GCC region, a real-time speed auction bidding engine, and an interactive learning management system. Focused heavily on high-traffic performance optimization, complex frontend state orchestration, and search visibility, achieving a perfect 100 SEO score, 96 Best Practices, and 93 Accessibility rating on Google Lighthouse under WCAG 2.2 guidelines. Championed Test-Driven Development (TDD) and iterative Scrum ceremonies to consistently ship reliable, production-ready releases.',
+        tags: ['Laravel', 'Vue.js', 'React', 'TDD', 'Agile/Scrum', 'WCAG 2.2', 'SEO', 'E-Commerce']
       }
     ]
   },
@@ -774,12 +742,9 @@ const defaultExperiences = [
         role: 'Junior Laravel Developer',
         workType: 'Full-time',
         location: 'Mardan, Pakistan',
-        period: 'March 2023 – June 2024',
+        period: 'March, 2023 – June 2024',
         isOpen: false,
-        bullets: [
-          'Developed and maintained RESTful APIs for CRM Systems using Laravel and Vue.js.',
-          'Managed MySQL databases, query optimization, and Git version control collaboration.'
-        ],
+        description: 'Developed and maintained dynamic web applications and core customer relationship management (CRM) systems with an emphasis on reliable API architectures and database efficiency. Built and documented modular RESTful API endpoints, implemented transactional business logic, and designed interactive user interfaces that improved client workflow productivity. Managed schema migrations, optimized relational database queries, and collaborated actively across Git version-controlled agile environments to maintain high code quality.',
         tags: ['Laravel', 'JavaScript', 'React.js', 'Vue.js', 'RESTful APIs', 'Git', 'MySQL']
       }
     ]
@@ -823,18 +788,6 @@ if (props.experiences && props.experiences.length) {
         ? exp.company.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase()
         : 'EXP';
 
-      let highlightsArr = [];
-      if (Array.isArray(exp.highlights)) {
-        highlightsArr = exp.highlights;
-      } else if (typeof exp.highlights === 'string' && exp.highlights.trim()) {
-        try {
-          highlightsArr = JSON.parse(exp.highlights);
-        } catch (e) {
-          highlightsArr = exp.highlights.split(',').map(s => s.trim()).filter(Boolean);
-        }
-      }
-
-      const hasHtml = exp.description && /<[a-z][\s\S]*>/i.test(exp.description);
       const tagsList = extractTechTags(exp);
 
       return {
@@ -850,10 +803,7 @@ if (props.experiences && props.experiences.length) {
             location: exp.location || '',
             period: exp.period || '2024 — Present',
             isOpen: false,
-            rawDescription: hasHtml ? exp.description : null,
-            bullets: highlightsArr.length
-              ? highlightsArr
-              : (!hasHtml && exp.description ? exp.description.split('. ').map(b => b.trim()).filter(Boolean) : []),
+            description: exp.description || '',
             tags: tagsList
           }
         ]
@@ -1047,6 +997,6 @@ const calMeetingUrl = computed(() => {
 });
 
 const contactEmail = computed(() => {
-  return props.settings?.contact_email || 'kashifkhannee@gmail.com';
+  return props.settings?.contact_email || 'kashif.tech.317@gmail.com';
 });
 </script>

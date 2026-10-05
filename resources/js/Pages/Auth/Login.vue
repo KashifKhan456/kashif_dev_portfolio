@@ -22,16 +22,6 @@
           <p class="text-xs text-neutral-400">Sign in to manage portfolio content, skills & inquiries.</p>
         </div>
 
-        <!-- Quick Credentials Banner -->
-        <div class="p-3.5 rounded-md bg-neutral-900 border border-neutral-800 text-xs text-neutral-300 space-y-1">
-          <div class="flex items-center justify-between font-bold text-white">
-            <span class="font-mono">🔑 Default Admin Login:</span>
-            <button type="button" @click="fillDefaultCredentials" class="text-[11px] text-neutral-300 hover:text-white underline font-mono">Auto-fill</button>
-          </div>
-          <p class="font-mono text-[11px] text-neutral-400">Email: <span class="text-white">admin@kashifkhan.com</span></p>
-          <p class="font-mono text-[11px] text-neutral-400">Pass: <span class="text-white">password</span></p>
-        </div>
-
         <div v-if="status" class="p-3 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs text-center font-medium">
           {{ status }}
         </div>
@@ -46,7 +36,8 @@
               type="email"
               required
               autofocus
-              placeholder="admin@kashifkhan.com"
+              autocomplete="username"
+              placeholder="name@example.com"
               class="w-full px-4 py-2.5 rounded-md bg-black border border-neutral-800 text-white text-xs placeholder-neutral-500 focus:outline-none focus:border-white transition-colors"
             />
             <span v-if="form.errors.email" class="text-xs text-rose-400 mt-1 block">{{ form.errors.email }}</span>
@@ -64,6 +55,7 @@
               v-model="form.password"
               type="password"
               required
+              autocomplete="current-password"
               placeholder="••••••••"
               class="w-full px-4 py-2.5 rounded-md bg-black border border-neutral-800 text-white text-xs placeholder-neutral-500 focus:outline-none focus:border-white transition-colors"
             />
@@ -114,11 +106,6 @@ const form = useForm({
   password: '',
   remember: false,
 });
-
-function fillDefaultCredentials() {
-  form.email = 'admin@kashifkhan.com';
-  form.password = 'password';
-}
 
 const submit = () => {
   form.post(route('login'), {

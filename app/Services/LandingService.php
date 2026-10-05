@@ -19,7 +19,7 @@ class LandingService
             'experiences' => Experience::orderBy('order', 'asc')->get(),
             'settings' => Setting::pluck('value', 'key')->toArray(),
             'testimonials' => Testimonial::where('is_active', true)->orderBy('order', 'asc')->get(),
-            'articles' => Article::where('is_published', true)->orderBy('order', 'asc')->orderBy('published_at', 'desc')->limit(3)->get(),
+            'articles' => Article::where('is_published', true)->orderBy('order', 'asc')->orderBy('published_at', 'desc')->limit(4)->get(),
             'canLogin' => true,
         ];
     }

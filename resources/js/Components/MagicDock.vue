@@ -95,7 +95,7 @@
       <div class="relative group flex items-end justify-center">
         <a
           ref="icon3Ref"
-          :href="settings?.linkedin_url || 'https://linkedin.com/in/kashifkhan'"
+          :href="settings?.linkedin_url || 'https://linkedin.com/in/kashif-khan456'"
           target="_blank"
           rel="noopener noreferrer"
           class="dock-item"
@@ -385,6 +385,10 @@ function updatePhysics(now) {
 }
 
 function onMouseMove(e) {
+  if (typeof window !== 'undefined' && (window.innerWidth < 640 || window.matchMedia('(hover: none)').matches)) {
+    mouseX = Infinity;
+    return;
+  }
   mouseX = e.clientX;
   if (!animFrameId) {
     lastTimestamp = performance.now();
@@ -451,6 +455,9 @@ function handleResumeClick(e) {
 }
 
 function applySizes() {
+  if (typeof window !== 'undefined' && (window.innerWidth < 640 || window.matchMedia('(hover: none)').matches)) {
+    mouseX = Infinity;
+  }
   const base = getBaseSize();
   const iconEls = getIconRefs();
   const innerEls = getInnerRefs();
@@ -524,9 +531,29 @@ onUnmounted(() => {
   }
 }
 
-.dock-item:hover {
-  color: hsl(var(--foreground));
-  background-color: hsl(var(--muted));
+/* Desktop-only hover states and tooltip display */
+@media (min-width: 640px) and (hover: hover) and (pointer: fine) {
+  .dock-item:hover {
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--muted));
+  }
+
+  .group:hover .dock-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Strictly disable hover styles and hide tooltips on mobile screens and touch devices */
+@media (max-width: 639px), (hover: none) {
+  .dock-tooltip {
+    display: none !important;
+  }
+
+  .dock-item:hover {
+    color: hsl(var(--muted-foreground));
+    background-color: hsl(var(--background));
+  }
 }
 
 .dock-item:active {
@@ -567,11 +594,6 @@ onUnmounted(() => {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 5px solid hsl(var(--primary));
-}
-
-.group:hover .dock-tooltip {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
 }
 
 .dock-nav-entrance {
