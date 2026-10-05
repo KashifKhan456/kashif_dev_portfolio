@@ -21,14 +21,14 @@ A state-of-the-art full-stack Developer Portfolio and dynamic Content Management
 
 ---
 
-## 📚 Documentation Directory
+## Documentation Directory
 
-- 📐 [System Architecture (`architecture.md`)](./architecture.md)
-- 🚀 [Feature Breakdown (`features.md`)](./features.md)
-- 📖 [Comprehensive Documentation (`docs.md`)](./docs.md)
-- 🧱 [Service Layer Architecture (`services.md`)](./services.md)
-- 🔌 [Integrations & External Services (`integrations.md`)](./integrations.md)
-- 🎨 [Design System & Typography (`design_system.md`)](./design_system.md)
+- [System Architecture (`architecture.md`)](./architecture.md)
+- [Feature Breakdown (`features.md`)](./features.md)
+- [Comprehensive Documentation (`docs.md`)](./docs.md)
+- [Service Layer Architecture (`services.md`)](./services.md)
+- [Integrations & External Services (`integrations.md`)](./integrations.md)
+- [Design System & Typography (`design_system.md`)](./design_system.md)
 
 ---
 
