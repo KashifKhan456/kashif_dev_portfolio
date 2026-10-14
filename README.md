@@ -1,4 +1,4 @@
-# Kashif Khan - Premium Full-Stack Portfolio & Admin Dashboard CMS
+# Kashif Khan - Premium Full-Stack Portfolio & Admin Dashboard
 
 A state-of-the-art full-stack Developer Portfolio and dynamic Content Management System (CMS) built with **Laravel 11**, **Vue.js 3 (Composition API)**, **Inertia.js**, **Tailwind CSS**, **Shadcn UI components**, and **Pinia State Management**.
 
